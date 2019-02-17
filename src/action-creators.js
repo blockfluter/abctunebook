@@ -1,4 +1,5 @@
-import actions from './actions';
+import actions from './actions'
+import { loadTunebookAction } from './loadTunebookAction';
 
 function makeActionCreator(type, ...argNames) {
     return function(...args) {
@@ -10,9 +11,14 @@ function makeActionCreator(type, ...argNames) {
     }
 }
 
+function xxx(tunes) {
+    console.log(tunes);
+    return {
+        type: actions.UPDATE_TUNECOLLECTION,
+        tunes
+    }
+}
 export default {
-	loadTunebook: makeActionCreator(
-		actions.LOAD_TUNEBOOK,
-		'url'
-	)
-};
+    loadTunebook:loadTunebookAction,
+    updateCollection:xxx
+}

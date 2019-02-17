@@ -9,7 +9,6 @@ import { store } from './store';
 import App from './app'
 import './index.css'
 
-import { GetTunebook } from './get-tunebook'
 /*
 GetTunebook(
     'http://localhost/blendr/proxy.php?url=http://www.pghardy.net/concertina/tunebooks/pgh_session_tunebook.abc'

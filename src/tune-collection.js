@@ -1,6 +1,6 @@
 import abcjs from 'abcjs/midi'
 
-export const TuneEditor = (abc) => {
+export const TuneCollection = (abc) => {
     let tuneBook = new abcjs.TuneBook(abc);
     function titles(){
         return tuneBook.tunes.map(

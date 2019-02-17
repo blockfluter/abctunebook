@@ -1,6 +1,6 @@
 jest.mock('../makeDomEditor')
 import 'react-testing-library/cleanup-after-each'
-import { TuneEditor } from '../tune-editor';
+import { TuneEditor } from '../tune-collection';
 
 test('can instantiate', () => {
 	const tunes = TuneEditor('X:1');

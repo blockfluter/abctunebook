@@ -9,9 +9,11 @@ export const TuneDisplay = props => {
     const [abcText, setAbcText] = useState(props.abcText);
     
     useEffect(() => {
-        makeDomEditor(props)
+        makeDomEditor(props);
     })
-  
+    useEffect(() => {
+        setAbcText(props.abcText);
+    })
     return (
         <React.Fragment>
             <textarea
