@@ -1,5 +1,4 @@
 export default function request(url) {
-    console.log('fetching...', url);
     return fetch(url)
         .then(response => {
             console.log(response);

@@ -1,24 +1,22 @@
 import actions from './actions'
 import { loadTunebookAction } from './loadTunebookAction';
 
-function makeActionCreator(type, ...argNames) {
-    return function(...args) {
-        const action = { type }
-        argNames.forEach((arg, index) => {
-            action[argNames[index]] = args[index]
-        })
-        return action
-    }
-}
 
-function xxx(tunes) {
-    console.log(tunes);
+
+function updateCollection(tunes) {
     return {
         type: actions.UPDATE_TUNECOLLECTION,
         tunes
     }
 }
+function selectTuneIndex(index) {
+    return {
+        type: actions.SELECT_TUNEINDEX,
+        index
+    }    
+}
 export default {
     loadTunebook:loadTunebookAction,
-    updateCollection:xxx
+    updateCollection,
+    selectTuneIndex
 }
