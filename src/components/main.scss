@@ -1,0 +1,61 @@
+$searchHeight: 3em;
+$thumbWidth: 120px;
+$padding: 8px;
+$menubackground: #CCC9BF;
+$buttoncolor: rgba(40, 60, 90, 1);
+$buttona1: rgba(40, 60, 90, 0.9);
+$buttona2: rgba(40, 60, 90, 0.4);
+$buttona0: rgba(40, 60, 90, 0);
+
+body{
+    background-color:whitesmoke;
+}
+
+
+button {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 1.5px solid $buttona1;
+    color: $buttoncolor;
+    padding: 6px 12px 6px 12px;
+    background: $buttona0;
+    &:hover {
+        background: $buttona2;
+    }
+}
+
+textarea {
+    box-sizing: border-box;
+    font-size:16px;
+    min-width: 600px;
+    resize:none;
+    line-height:1.4em;
+    padding:6px;
+    height:100%;
+}
+
+.container{
+    display: flex;
+    overflow-y:visible;
+    height:100%;
+}
+
+#root {
+    margin:32px 50px 0 50px;
+}
+.controlbar {
+    margin-bottom:18px;
+    * {
+        margin-right:4px;
+    }
+    input {
+        width: 450px;
+    }
+    
+}
+
+.links a {
+    display: block;
+    margin-top:1em;
+}

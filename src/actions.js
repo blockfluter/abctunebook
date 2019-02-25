@@ -1,5 +1,8 @@
 export default {
-	LOAD_TUNEBOOK: 'loadTunebook',
-	UPDATE_TUNECOLLECTION: 'updateTunecollection',
-	SELECT_TUNEINDEX: 'selectTuneIndex',
+	loadTunebook: 'loadTunebook',
+	updateCollection: 'updateCollection',
+	selectTuneIndex: 'selectTuneIndex',
+	selectCopyIndex: 'selectCopyIndex',
+	copyTune: 'copyTune',
+	saveTunebook: 'saveTunebook',
 };

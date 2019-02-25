@@ -1,6 +1,6 @@
-jest.mock('../makeDomEditor')
+jest.mock('../abc-integration/makeDomEditor')
 import 'react-testing-library/cleanup-after-each'
-import { TuneCollection } from '../tune-collection';
+import { TuneCollection } from '../abc-integration/tune-collection';
 
 test('can instantiate', () => {
 	const tunes = TuneCollection('X:1');

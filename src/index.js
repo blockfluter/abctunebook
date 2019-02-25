@@ -2,27 +2,18 @@ import * as serviceWorker from './serviceWorker'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import { store } from './store';
+import { store } from './store'
 
 import App from './app'
-import './index.css'
 
-/*
-GetTunebook(
-    'http://localhost/blendr/proxy.php?url=http://www.pghardy.net/concertina/tunebooks/pgh_session_tunebook.abc'
-)
-    .then(abc => {
-        console.log('--->', abc)
-    })
-    .catch(message => {
-        console.log(message)
-    })
-*/
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </Provider>,
     document.getElementById('root')
 )

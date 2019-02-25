@@ -1,7 +1,7 @@
 import 'react-testing-library/cleanup-after-each'
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
-import { TuneDisplay } from '../tune-display';
+import { TuneDisplay } from '../components/tune-display';
 
 describe('run a test or two', () => {
 	it('renders elements with assigned ids', () => {

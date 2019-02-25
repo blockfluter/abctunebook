@@ -2,12 +2,12 @@ import abcjs from 'abcjs/midi'
 
 export const TuneCollection = (abc) => {
     let tuneBook = new abcjs.TuneBook(abc);
-    function titles(){
+    const titles = () => {
         return tuneBook.tunes.map(
             (t, i) => `${Number(i) + 1}. ${t.title}`
         )
     }
-    function tuneCount(){
+    const tuneCount = () => {
         return tuneBook.tunes.length
     }
     const tuneAbc = n => {
@@ -18,7 +18,7 @@ export const TuneCollection = (abc) => {
     return Object.freeze({
         titles,
         tuneCount,
-        tuneAbc
+        tuneAbc,
     })
 }
 
