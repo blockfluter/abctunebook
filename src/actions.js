@@ -5,4 +5,5 @@ export default {
 	selectCopyIndex: 'selectCopyIndex',
 	copyTune: 'copyTune',
 	saveTunebook: 'saveTunebook',
+	deleteUrl: 'deleteUrl',
 };

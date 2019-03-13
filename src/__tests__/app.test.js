@@ -1,4 +1,4 @@
-jest.mock('../abc-integration/makeDomEditor')
+jest.mock('../abc-integration/make-dom-editor')
 
 import React from "react";
 import { MemoryRouter } from 'react-router';
@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 
 it("can render a div", () => {
-    const { container } = render(<MemoryRouter initialEntries={[ '/original' ]}><Provider store={store}><App /></Provider></MemoryRouter>);
+    const { container } = render(<MemoryRouter initialEntries={[ '/view' ]}><Provider store={store}><App /></Provider></MemoryRouter>);
     const div = container.querySelector("div");
     expect(div).toBeDefined();
 });

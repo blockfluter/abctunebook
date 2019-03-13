@@ -35,6 +35,13 @@ function saveCollectionUrls() {
     }
 }
 
+function deleteUrl(url) {
+    return {
+        type: actions.deleteUrl,
+        url
+    }
+}
+
 export default {
     loadTunebook,
     updateCollection,
@@ -42,5 +49,6 @@ export default {
     selectCopyIndex,
     copyTune,
     saveTunebook,
-    saveCollectionUrls
+    saveCollectionUrls,
+    deleteUrl,
 }

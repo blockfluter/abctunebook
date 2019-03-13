@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import 'abcjs/abcjs-midi.css'
 
 import { makeDomEditor } from '../abc-integration/make-dom-editor'
-import { setUrlList, getUrlList } from '../services/url-list-storage'
 
 export const TuneDisplay = props => {
     const [abcText, setAbcText] = useState(props.abcText)
@@ -14,9 +13,6 @@ export const TuneDisplay = props => {
     useEffect(() => {
         setAbcText(props.abcText)
     }, [props.abcText])
-    useEffect(() => {
-        setUrlList(props.collectionUrls);
-    }, [props.collectionUrls])
  
     return (
         <div className="container">

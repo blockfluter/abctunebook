@@ -19,10 +19,8 @@ const updateCollection = (state, action) => {
 }
 const selectTuneIndex= (state, action) => {
     const matches = state.copies.filter((item, index) => {
-        console.log('===>',item);
         return action.index === item.index && state.url === item.attribution;
     });
-    console.log('---->', matches, action, state.url);
     return {
         ...state,
         abcText: state.tunes.tuneAbc(action.index),
@@ -50,19 +48,26 @@ const copyTune = (state, action) => {
         }]
     }
 }
+const deleteUrl = (state, action) => {
+    return {
+        ...state,
+        collectionUrls: state.collectionUrls.filter(item=>item!==action.url)
+    }
+}
 
 const reducerFunctions = {
     [actions.updateCollection]: updateCollection,
     [actions.selectTuneIndex]: selectTuneIndex,
     [actions.selectCopyIndex]: selectCopyIndex,
     [actions.copyTune]: copyTune,
+    [actions.deleteUrl]: deleteUrl,
 }
 
 export const reducer = (state, action) => {
-    console.log(state, action)
+//    console.log(state, action)
     if (reducerFunctions[action.type]) {
         const result = reducerFunctions[action.type](state, action)
-        console.log("R:", result);
+//        console.log("R:", result);
         return result;
     }
     return state

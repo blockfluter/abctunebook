@@ -45,7 +45,7 @@ it('has a cancel control', () => {
 
 it('can accept a default input value', () => {
     const theValue = '--some-value--'
-    const { container, getByText } = render(<MemoryRouterWrapper value={theValue} />)
+    const { container, getByText } = render(<MemoryRouterWrapper url={theValue} />)
     const input = container.querySelector('input')
 
     expect(input.value).toBe(theValue)

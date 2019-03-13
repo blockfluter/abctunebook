@@ -11,7 +11,7 @@ const controls = props => {
             <span className='fa fa-arrow-right'
                 enabled={(props.tuneIndex < props.titles.length - 1).toString()}
                 onClick={() =>
-                    props.selectTune(Math.min(props.titles.length - 1, props.tuneIndex + 1))
+                    props.selectTune(Math.min(props.titles.length - 1, Number(props.tuneIndex) + 1))
                 }
             />
             <span>

@@ -4,9 +4,9 @@ import { TuneCollection } from '../abc-integration/tune-collection'
 
 export const loadTunebook = (props, url) => {
     return dispatch => {
-        return GetTunebook(`http://localhost/blendr/proxy.php?url=${url}`)
+        return GetTunebook(url)
             .then(all => {
-                props.history.push('/')
+                props.history.push('/view')
                 const tc = TuneCollection(all)
                 dispatch(actionCreators.updateCollection(tc, url))
             })

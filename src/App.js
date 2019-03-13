@@ -1,36 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import actionCreators from './action-creators/action-creators'
 
-import { Menu } from './components/menu'
 import { AcceptUrl } from './components/accept-url'
 import { TuneDisplay } from './components/tune-display'
 import { TuneSelect } from './components/tune-select'
+import { setUrlList } from './services/url-list-storage'
 
-import style from './app.module.scss'
 import './components/main.scss'
 import 'font-awesome/css/font-awesome.min.css'
 
-const menu = [
-    { menu: 'Tunebook' },
-    [
-        { menu: 'File' },
-        { menu: 'Load Tunebook from URL...', to: '/load' },
-        { menu: 'Show Original', to: '/original' },
-        { menu: 'Show Copies', to: '/copied' },
-        { menu: 'Download Copied...', to: '/download' },
-        {},
-    ],
-]
-
 const acceptUrl = props => {
-    console.log('acc', props)
-
     return (
         <AcceptUrl
             ok={url => props.loadTunebook(props, url)}
+            deleteUrl={url => props.deleteUrl(url)}
             url={props.url}
             collectionUrls={props.collectionUrls}
             okLabel="Okay"
@@ -55,21 +41,20 @@ const tuneSelect = props => {
                 saveTunebook={props.saveTunebook}
                 canCopy={props.canCopy}
             />
-            <TuneDisplay abcText={props.abcText} collectionUrls={props.collectionUrls}/>
+            <TuneDisplay abcText={props.abcText} collectionUrls={props.collectionUrls} />
         </React.Fragment>
     )
 }
 
 const App = props => {
+    useEffect(() => {
+        setUrlList(props.collectionUrls)
+    }, [props.collectionUrls])
     return (
         <React.Fragment>
             <Switch>
-                <Route exact path="/" render={() => <Redirect to="/original" />} />
-                <Route
-                    exact
-                    path="/:collection(original|copied)"
-                    render={() => tuneSelect(props)}
-                />
+                <Route exact path="/" render={() => <Redirect to="/load" />} />
+                <Route exact path="/view" render={() => tuneSelect(props)} />
                 <Route exact path="/load" render={() => acceptUrl(props)} />
             </Switch>
         </React.Fragment>
@@ -103,6 +88,9 @@ const mapDispatchToProps = dispatch => ({
     },
     saveTunebook(copies, title) {
         dispatch(actionCreators.saveTunebook(copies, title))
+    },
+    deleteUrl(url) {
+        dispatch(actionCreators.deleteUrl(url))
     },
 })
 
