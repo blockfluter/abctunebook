@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { TuneDisplay } from './tune-display'
 
 const controls = props => {
     return (
         <React.Fragment>
-            <span className='fa fa-arrow-left'    enabled={(props.tuneIndex > 0).toString()}
+            <span
+                className="fa fa-arrow-left"
+                enabled={(props.tuneIndex > 0).toString()}
                 onClick={() => props.selectTune(Math.max(0, props.tuneIndex - 1))}
             />
-            <span className='fa fa-arrow-right'
+            <span
+                className="fa fa-arrow-right"
                 enabled={(props.tuneIndex < props.titles.length - 1).toString()}
                 onClick={() =>
                     props.selectTune(Math.min(props.titles.length - 1, Number(props.tuneIndex) + 1))
@@ -25,7 +29,9 @@ const controls = props => {
                 </select>
             </span>
             {props.canCopy === true && (
-                <button onClick={() => props.copyTune(props.abcText, 'xxx')}><i className='fa fa-copy'/> Copy</button>
+                <button onClick={() => props.copyTune(props.abcText, 'xxx')}>
+                    <i className="fa fa-copy" /> Copy
+                </button>
             )}
         </React.Fragment>
     )
@@ -49,21 +55,54 @@ const copyControls = props => {
                     props.saveTunebook(props.copies, 'tunebook')
                 }}
             >
-             <i className='fa fa-download'/>   Download
+                <i className="fa fa-download" /> Download
             </button>
         </React.Fragment>
     )
 }
-
 export const TuneSelect = props => {
+    const fixedElement = React.createRef()
+    const scrollingElement = React.createRef()
+
+    useEffect(() => {
+        if (scrollingElement && fixedElement) {
+            scrollingElement.current.style.marginTop = `${fixedElement.current.clientHeight}px`
+        }
+    })
+
     return (
-        <div className="controlbar">
+        <React.Fragment>
+            <div ref={fixedElement} className="controlbar">
+                <TuneSelectControls
+                    {...props}
+                    titles={props.titles}
+                    tuneIndex={props.tuneIndex}
+                    selectTune={x => props.selectTuneIndex(x)}
+                    selectCopy={x => props.selectCopyIndex(x)}
+                    copyTune={x => props.copyTune(props.abcText, props.url, props.tuneIndex)}
+                    abcText={props.abcText}
+                    copies={props.copies}
+                    copyIndex={props.copyIndex}
+                    saveTunebook={props.saveTunebook}
+                    canCopy={props.canCopy}
+                />
+            </div>
+            <div ref={scrollingElement}>
+                <TuneDisplay abcText={props.abcText} collectionUrls={props.collectionUrls} />
+            </div>
+        </React.Fragment>
+    )
+}
+
+const TuneSelectControls = props => {
+    return (
+        <React.Fragment>
             <span role="button">
                 <Link to="/load">Load</Link>
             </span>
             {props.titles.length > 0 && controls(props)}
             {props.copies.length > 0 && copyControls(props)}
-        </div>
+        </React.Fragment>
     )
 }
 TuneSelect.defaultProps = {

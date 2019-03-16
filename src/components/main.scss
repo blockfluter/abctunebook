@@ -6,10 +6,14 @@ $buttoncolor: rgba(40, 60, 90, 1);
 $buttona1: rgba(40, 60, 90, 0.9);
 $buttona2: rgba(40, 60, 90, 0.4);
 $buttona0: rgba(40, 60, 90, 0);
+$backgroundColor: #fffdf5;
+$darkerBackground: darken($backgroundColor, 5);
+$leftMargin: 16px;
 
 body{
-    background-color:whitesmoke;
+    background-color:$backgroundColor;
     font-size:1.3em;
+    margin:0;
 }
 
 
@@ -25,7 +29,9 @@ button {
         background: $buttona2;
     }
 }
-
+.col1 {
+    width:600px;
+}
 textarea {
     box-sizing: border-box;
     width: 100%;
@@ -39,21 +45,38 @@ textarea {
 //    display: flex;
     overflow-y:visible;
     height:100%;
+    padding-top:16px;
+    padding-left:$leftMargin;
 }
 
 #root {
-    margin:32px 50px 0 50px;
 }
-
 .controlbar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    z-index:1;
+    padding:.5em 0 .5em $leftMargin;
+    background:$darkerBackground;
+    height: auto;
+    top:0;
+    position:fixed;
+    width:100%;
     margin-bottom:18px;
     * {
-        font-size:16px;
-        margin-right:4px;
+        margin-right:7px;
     }
+    select {
+        max-width: 200px;
+    } 
     input {
-        width: 450px;
-    }  
+        width:30em;
+
+    } 
+    button, select, input {
+        font-size: 1em;
+    }
+    div {
+        margin-top:.5em;
+    }
 }
 
 .links a {
@@ -62,7 +85,7 @@ textarea {
 }
 
 .icon_link {
-   margin-top:.7em;
+    margin-top:.5em;
    span {
        margin-right:.7em;
        &:hover {

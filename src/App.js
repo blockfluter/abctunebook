@@ -5,7 +5,6 @@ import { withRouter } from 'react-router'
 import actionCreators from './action-creators/action-creators'
 
 import { AcceptUrl } from './components/accept-url'
-import { TuneDisplay } from './components/tune-display'
 import { TuneSelect } from './components/tune-select'
 import { setUrlList } from './services/url-list-storage'
 
@@ -24,25 +23,9 @@ const acceptUrl = props => {
         />
     )
 }
-
 const tuneSelect = props => {
     return (
-        <React.Fragment>
-            <TuneSelect
-                {...props}
-                titles={props.titles}
-                tuneIndex={props.tuneIndex}
-                selectTune={x => props.selectTuneIndex(x)}
-                selectCopy={x => props.selectCopyIndex(x)}
-                copyTune={x => props.copyTune(props.abcText, props.url, props.tuneIndex)}
-                abcText={props.abcText}
-                copies={props.copies}
-                copyIndex={props.copyIndex}
-                saveTunebook={props.saveTunebook}
-                canCopy={props.canCopy}
-            />
-            <TuneDisplay abcText={props.abcText} collectionUrls={props.collectionUrls} />
-        </React.Fragment>
+        <TuneSelect {...props}/>
     )
 }
 
