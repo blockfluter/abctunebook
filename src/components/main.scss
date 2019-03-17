@@ -1,7 +1,7 @@
 $searchHeight: 3em;
 $thumbWidth: 120px;
 $padding: 8px;
-$menubackground: #CCC9BF;
+$menubackground: #ccc9bf;
 $buttoncolor: rgba(40, 60, 90, 1);
 $buttona1: rgba(40, 60, 90, 0.9);
 $buttona2: rgba(40, 60, 90, 0.4);
@@ -10,12 +10,11 @@ $backgroundColor: #fffdf5;
 $darkerBackground: darken($backgroundColor, 5);
 $leftMargin: 16px;
 
-body{
-    background-color:$backgroundColor;
-    font-size:1.3em;
-    margin:0;
+body {
+    background-color: $backgroundColor;
+    font-size: 1.3em;
+    margin: 0;
 }
-
 
 button {
     user-select: none;
@@ -30,77 +29,196 @@ button {
     }
 }
 .col1 {
-    width:600px;
+    width: 600px;
+    margin:0 auto;
+}
+.col2 {
+    margin:0 auto;
+    width:fit-content;
 }
 textarea {
     box-sizing: border-box;
     width: 100%;
-    resize:none;
-    line-height:1.4em;
-    padding:6px;
-    height:9em;
+    resize: none;
+    line-height: 1.4em;
+    padding: 6px;
+    height: 13em;
 }
 
-.container{
-//    display: flex;
-    overflow-y:visible;
-    height:100%;
-    padding-top:16px;
-    padding-left:$leftMargin;
+.container {
+    //    display: flex;
+    overflow-y: visible;
+    height: 100%;
+    padding-top: 16px;
+    padding-left: $leftMargin;
 }
 
 #root {
 }
 .controlbar {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    z-index:1;
-    padding:.5em 0 .5em $leftMargin;
-    background:$darkerBackground;
+    z-index: 1;
+    padding: 0.5em 0 0.5em $leftMargin;
+    background: $darkerBackground;
     height: auto;
-    top:0;
-    position:fixed;
-    width:100%;
-    margin-bottom:18px;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 18px;
     * {
-        margin-right:7px;
+        margin-right: 7px;
     }
     select {
         max-width: 200px;
-    } 
+    }
     input {
-        width:30em;
-
-    } 
-    button, select, input {
+        width: 30em;
+    }
+    select,
+    input {
         font-size: 1em;
     }
+    button {
+        font-size: 0.75em;
+    }
     div {
-        margin-top:.5em;
+        margin-top: 0.5em;
+    }
+    label {
+        font-size: 0.75em;
     }
 }
 
 .links a {
     display: block;
-    margin-top:1em;
+    margin-top: 1em;
 }
 
 .icon_link {
-    margin-top:.5em;
-   span {
-       margin-right:.7em;
-       &:hover {
-           color:darkred;
-           cursor:pointer;
-       }
-   }
-   button {
-    font-size:16px;
-       display:inline;
-       text-decoration:underline;
-       border:0;
-       cursor:pointer;
-       &:hover{
-           background:transparent;
-       }
-   } 
+    margin-top: 0.5em;
+    span {
+        margin-right: 0.7em;
+        &:hover {
+            color: darkred;
+            cursor: pointer;
+        }
+    }
+    button {
+        font-size: 16px;
+        display: inline;
+        text-decoration: underline;
+        border: 0;
+        cursor: pointer;
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+/* Some basic CSS to make the MIDI controls in abcjs presentable. */
+
+.fa5 .abcjs-inline-midi .abcjs-btn {
+}
+
+.abcjs-inline-midi {
+    background-color: darken($darkerBackground,30);
+    color:#000;
+   
+    [type='button']{
+        color:#000;
+        font-size:1em;
+    }
+    .abcjs-btn {
+       
+    }
+
+    .abcjs-btn:hover {
+
+    }
+
+    .abcjs-midi-selection:before {
+
+    }
+
+    .abcjs-midi-selection.abcjs-pushed {
+
+    }
+
+    .abcjs-midi-loop:before {
+
+    }
+
+    .abcjs-midi-loop.abcjs-pushed {
+
+    }
+
+    .abcjs-midi-reset:before {
+
+    }
+
+    .abcjs-midi-reset.abcjs-pushed {
+    }
+
+    .abcjs-midi-start:before {
+
+    }
+
+    .abcjs-midi-start.abcjs-pushed:before {
+
+    }
+
+    .abcjs-midi-start.abcjs-loading {
+
+    }
+
+    .abcjs-midi-start.abcjs-loading:before {
+
+    }
+
+    .abcjs-midi-progress-background {
+     }
+
+    .abcjs-midi-progress-indicator {
+        background-color:#000;
+    }
+
+    .abcjs-midi-clock, .abcjs-midi-post {
+
+    }
+
+    .abcjs-midi-pre {
+
+    }
+
+    .abcjs-tempo-wrapper {
+
+    }
+
+    .abcjs-midi-tempo {
+
+    }
+}
+
+/* Adding the class "abcjs-large" will make the control easier on a touch device. */
+.abcjs-large .abcjs-inline-midi {
+    height: 52px;
+}
+.abcjs-large .abcjs-btn {
+    width: 56px;
+    height: 52px;
+    font-size: 28px;
+}
+.abcjs-large .abcjs-midi-progress-background {
+    height: 20px;
+    border: 4px solid #cccccc;
+}
+.abcjs-large .abcjs-midi-progress-indicator {
+    height: 28px;
+    top: -8px;
+    width: 40px;
+}
+.abcjs-large .abcjs-midi-clock {
+    font-size: 32px;
+    margin-right: 10px;
+    margin-left: 10px;
 }

@@ -37,8 +37,8 @@ const App = props => {
         <React.Fragment>
             <Switch>
                 <Route exact path="/" render={() => <Redirect to="/load" />} />
-                <Route exact path="/view" render={() => tuneSelect(props)} />
-                <Route exact path="/load" render={() => acceptUrl(props)} />
+                <Route exact path="/view" component={() => tuneSelect(props)} />
+                <Route exact path="/load" component={() => acceptUrl(props)} />
             </Switch>
         </React.Fragment>
     )
@@ -52,7 +52,7 @@ const mapStateToProps = state => {
         url: state.url,
         copyIndex: state.copyIndex,
         collectionUrls: state.collectionUrls,
-        canCopy: state.canCopy,
+        canCopy: state.canCopy
     }
 }
 

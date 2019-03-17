@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { TuneDisplay } from './tune-display'
@@ -28,11 +28,6 @@ const controls = props => {
                     ))}
                 </select>
             </span>
-            {props.canCopy === true && (
-                <button onClick={() => props.copyTune(props.abcText, 'xxx')}>
-                    <i className="fa fa-copy" /> Copy
-                </button>
-            )}
         </React.Fragment>
     )
 }
@@ -101,12 +96,18 @@ const TuneSelectControls = props => {
                 <Link to="/load">Load</Link>
             </span>
             {props.titles.length > 0 && controls(props)}
+                
+            <button onClick={() => props.copyTune(props.abcText, 'xxx')}>
+                <i className="fa fa-copy" /> {props.canCopy ? 'Add' : 'Update'}
+            </button>
             {props.copies.length > 0 && copyControls(props)}
         </React.Fragment>
     )
 }
+
 TuneSelect.defaultProps = {
     titles: [],
+    copies: [],
     selectTune: () => {},
     canCopy: true,
     copyTune: () => {},
@@ -117,6 +118,7 @@ TuneSelect.defaultProps = {
 
 TuneSelect.propTypes = {
     titles: PropTypes.array,
+    copies: PropTypes.array,
     selectTune: PropTypes.func,
     canCopy: PropTypes.bool,
     copyTune: PropTypes.func,
