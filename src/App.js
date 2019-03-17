@@ -6,6 +6,7 @@ import actionCreators from './action-creators/action-creators'
 
 import { AcceptUrl } from './components/accept-url'
 import { TuneSelect } from './components/tune-select'
+import { TuneEdit } from './components/tune-edit'
 import { setUrlList } from './services/url-list-storage'
 
 import './components/main.scss'
@@ -28,6 +29,11 @@ const tuneSelect = props => {
         <TuneSelect {...props}/>
     )
 }
+const tuneEdit = props => {
+    return (
+        <TuneEdit {...props}/>
+    )
+}
 
 const App = props => {
     useEffect(() => {
@@ -39,6 +45,7 @@ const App = props => {
                 <Route exact path="/" render={() => <Redirect to="/load" />} />
                 <Route exact path="/view" component={() => tuneSelect(props)} />
                 <Route exact path="/load" component={() => acceptUrl(props)} />
+                <Route exact path="/edit" component={() => tuneEdit(props)} />
             </Switch>
         </React.Fragment>
     )
@@ -75,6 +82,9 @@ const mapDispatchToProps = dispatch => ({
     deleteUrl(url) {
         dispatch(actionCreators.deleteUrl(url))
     },
+    publishAbcChange(abc) {
+        dispatch(actionCreators.publishAbcChange(abc))
+    }
 })
 
 export default withRouter(

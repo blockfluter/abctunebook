@@ -6,4 +6,5 @@ export default {
 	copyTune: 'copyTune',
 	saveTunebook: 'saveTunebook',
 	deleteUrl: 'deleteUrl',
+	publishAbcChange: 'publishAbcChange',
 };

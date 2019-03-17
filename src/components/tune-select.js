@@ -28,6 +28,15 @@ const controls = props => {
                     ))}
                 </select>
             </span>
+            {props.canCopy && (
+                <button onClick={() => props.copyTune(props.abcText, 'xxx')}>
+                    <i className="fa fa-copy" /> Copy
+                </button>
+            )}
+            <Link to="/edit">
+                <i className="fa fa-edit" />
+                Edit
+            </Link>
         </React.Fragment>
     )
 }
@@ -83,7 +92,11 @@ export const TuneSelect = props => {
                 />
             </div>
             <div ref={scrollingElement}>
-                <TuneDisplay abcText={props.abcText} collectionUrls={props.collectionUrls} />
+                <TuneDisplay
+                    publishAbcChange={props.publishAbcChange}
+                    abcText={props.abcText}
+                    collectionUrls={props.collectionUrls}
+                />
             </div>
         </React.Fragment>
     )
@@ -96,10 +109,6 @@ const TuneSelectControls = props => {
                 <Link to="/load">Load</Link>
             </span>
             {props.titles.length > 0 && controls(props)}
-                
-            <button onClick={() => props.copyTune(props.abcText, 'xxx')}>
-                <i className="fa fa-copy" /> {props.canCopy ? 'Add' : 'Update'}
-            </button>
             {props.copies.length > 0 && copyControls(props)}
         </React.Fragment>
     )

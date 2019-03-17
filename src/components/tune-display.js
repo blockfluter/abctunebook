@@ -1,34 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { AbcControls } from './abc-controls'
 import 'abcjs/abcjs-midi.css'
 
-import { makeDomEditor } from '../abc-integration/make-dom-editor'
-
 export const TuneDisplay = props => {
-    const [abcText, setAbcText] = useState(props.abcText)
 
-    useEffect(() => {
-        makeDomEditor(props)
-    })
-    useEffect(() => {
-        setAbcText(props.abcText)
-    }, [props.abcText])
- 
     return (
         <div className="container">
-            <div className="col1">
-                <div data-testid={props.midiId} id={props.midiId} />
-                <textarea
-                    data-testid={props.textId}
-                    id={props.textId}
-                    value={abcText}
-                    onChange={e => setAbcText(e.target.value)}
-                />
-                <div data-testid={props.warningsId} id={props.warningsId} />
-            </div>
-            <div className="col2">
-                <div data-testid={props.canvasId} id={props.canvasId} />
-            </div>
+            <AbcControls {...props}/>
         </div>
     )
 }
@@ -40,6 +19,9 @@ TuneDisplay.defaultProps = {
     canvasId: 'c1',
     abcEditor: false,
     collectionUrls: [],
+    soundFontUrl: '',
+    publishAbcChange: () => { },
+    readOnly: true,
 }
 
 TuneDisplay.propTypes = {
@@ -49,4 +31,6 @@ TuneDisplay.propTypes = {
     canvasId: PropTypes.string,
     abcText: PropTypes.string,
     collectionUrls: PropTypes.array,
+    publishAbcChange: PropTypes.func.isRequired,
+    readOnly: PropTypes.bool,
 }

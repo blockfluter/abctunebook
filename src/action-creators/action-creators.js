@@ -22,16 +22,23 @@ function selectCopyIndex(index) {
     }    
 }
 function copyTune(abc, attr, tuneIndex) {
+    console.log(tuneIndex);
     return {
         type: actions.copyTune,
         abc,
         attr,
-        tuneIndex: tuneIndex.toString(),
+        tuneIndex: tuneIndex!== undefined ? tuneIndex.toString() : undefined,
     }    
 }   
 function saveCollectionUrls() {
     return {
         type: actions.saveCollectionUrls
+    }
+}
+function publishAbcChange(abc){
+    return {
+        type: actions.publishAbcChange,
+        abc
     }
 }
 
@@ -51,4 +58,5 @@ export default {
     saveTunebook,
     saveCollectionUrls,
     deleteUrl,
+    publishAbcChange,
 }

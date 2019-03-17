@@ -35,7 +35,14 @@ const selectCopyIndex= (state, action) => {
         copyIndex: action.index,
     }
 }
+const publishAbcChange= (state, action) => {
+    return {
+        ...state,
+        abcText: action.abc,
+    }
+}
 const copyTune = (state, action) => {
+    console.log(action);
     return {
         ...state,
         copyIndex: state.copies.length,
@@ -43,7 +50,7 @@ const copyTune = (state, action) => {
         copies: [...state.copies, {
             abc: action.abc.replace(/\nZ.*/, `$&\nZ:taken from ${action.attr}`),
             attribution: action.attr,
-            index: action.tuneIndex.toString(),
+            index: action.tuneIndex!== undefined ? action.tuneIndex.toString() : undefined,
             title: action.abc.match(/\nT:(.*)/)[1],
         }]
     }
@@ -61,6 +68,7 @@ const reducerFunctions = {
     [actions.selectCopyIndex]: selectCopyIndex,
     [actions.copyTune]: copyTune,
     [actions.deleteUrl]: deleteUrl,
+    [actions.publishAbcChange]: publishAbcChange,
 }
 
 export const reducer = (state, action) => {
